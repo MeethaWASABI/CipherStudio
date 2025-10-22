@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 // --- CONFIGURATION ---
 const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://CipherStudio_user:n9FNg9sVI9n3jwkz@cluster0.wo4x0bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; // Add your MONGO_URI here
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // --- DATABASE SCHEMA (Updated) ---
 const projectSchema = new mongoose.Schema({
@@ -126,7 +126,8 @@ app.post("/projects/:id", async (req, res) => {
 
 
 // --- START SERVER ---
-app.listen(PORT, () => {
-  console.log(`Backend server running on http://localhost:${PORT}`);
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Backend server running on port ${PORT}`);
 });
 
